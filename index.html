@@ -13,8 +13,8 @@
         <ul id='rightNav'>
             <li class='active'><a href="index.html">Home</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="index.html">Datasheet</a></li>
-            <li><a href="index.html">Download</a></li>
+            <li><a href="datasheet.html">Datasheet</a></li>
+            <li><a href="https://zenodo.org/record/6615386#.Yp-_2BPMK3I">Download</a></li>
             <li><a href="https://github.com/REACT-NLP">Github</a></li>
         </ul>
     </div>
@@ -38,12 +38,33 @@
         <p>
             TCAB comprises a large collection of fully-automated attacks, enabling new tasks such as attack labeling --- automatically determining the adversarial attacks (if any) used to generate a given piece of text --- attack localization, and attack characterization. As a complement to model robustness, TCAB facilitates research that enables one to learn more about their attackers and subsequently develop appropriate defenses.
         </p>
-        <h3 class='subsectionHeader'>Why was TCAB created?</h3><hr>
+        <br>
+        <h3 class='subsectionHeader'>How was TCAB created?</h3><hr>
         <p>
-            A common defense strategy against adversarial attacks is to make classifiers more robust, thus most evaluation frameworks focus on model robustness. However, these defenses are often computationally expensive or result in reduced accuracy. Additionally, benchmarks that evaluate these defenses require carefully controlled and expensive human filtering, typically resulting in a small number of evaluation examples.
+            After training a target model on a particular domain dataset, TCAB generates adversarial examples by attacking instances in the test set using <a href='https://github.com/QData/TextAttack'>TextAttack</a> and <a href='https://github.com/thunlp/OpenAttack'>OpenAttack</a> --- two open source toolchains that provide a wide range of fully-automated off-the-shelf attacks.
         </p>
         <p>
-            TCAB comprises a large collection of fully-automated attacks, enabling new tasks such as attack labeling --- automatically determining the adversarial attacks (if any) used to generate a given piece of text --- attack localization, and attack characterization. As a complement to model robustness, TCAB facilitates research that enables one to learn more about their attackers and subsequently develop appropriate defenses.
+            TCAB contains attacks from methods that cover a wide range of design choices and assumptions, such as model access level (e.g., white/gray/black box), perturbation level (e.g., char/word/token), and linguistic constraints that can help make attacks more indistinguishable from the original text.
+        </p>
+        <br>
+        <h3 class='subsectionHeader'>Human Evaluation</h3><hr>
+        <p>
+            TODO
+        </p>
+        <br>
+        <h3 class='subsectionHeader'>Getting Started</h3><hr>
+        <p>
+            TODO
+        </p>
+        <br>
+        <h3 class='subsectionHeader'>Extending TCAB</h3><hr>
+        <p>
+            TODO
+        </p>
+        <br>
+        <h3 class='subsectionHeader'>Who Created TCAB?</h3><hr>
+        <p>
+            TCAB was created by researchers at the Univesity of Oregon and University of California Irvine. Please direct any questions to <a href="mailto: lowd@cs.uoregon.edu">lowd@cs.uoregon.edu</a> or <a href="mailto: sameer@uci.edu">sameer@uci.edu</a>.
         </p>
     </div>
 
