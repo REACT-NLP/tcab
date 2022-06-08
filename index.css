@@ -3,6 +3,10 @@ body, html {
   padding:0;
 }
 
+a {
+    target="_blank" rel="noopener noreferrer"
+}
+
 #navBar {
   background-color:  #333;
   height: 47px;
