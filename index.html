@@ -49,7 +49,7 @@
         <br>
         <h3 class='subsectionHeader'>Human Evaluation</h3><hr>
         <p>
-            TODO: describe setup and results.
+            We adopt crowdsourcing to label a portion of the adversarial examples in TCAB to get a sense of how often perturbed instances preserve their original labels. In total, 5,581 adversarial examples were annoted by workers from <a href="https://www.mturk.com/">Amazon Mechanical Turk</a>, with each instance labeled by 5 different workers. We observe that on average, 51% and 81% of the adversarial instances' labels were preserved for sentiment analysis and abuse detection datasets, respectively.
         </p>
         <br>
         <h3 class='subsectionHeader'>Getting Started</h3><hr>
@@ -59,7 +59,7 @@
         <br>
         <h3 class='subsectionHeader'>Baseline Models</h3><hr>
         <p>
-            TODO
+            We provide a baseline approach for attack detection and labeling that combines contextualized embeddings from a fine-tuned BERT model and hand-crafted text, language model, and target model properties. Our baseline approach achieves 91.7% and 66.7% accuracy for attack detection and labeling, on average. Code for these baselines is in the <a href="https://github.com/REACT-NLP/tcab_benchmark">TCAB Benchmark</a> repository on Github.
         </p>
         <br>
         <h3 class='subsectionHeader'>Extending TCAB</h3><hr>
