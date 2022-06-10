@@ -25,19 +25,142 @@
     </div>
 
     <div id='mainDiv'>
-        <h3 class='subsectionHeader'>Motivation</h3><hr>
+        <h2 class='subsectionHeader'>Motivation</h2><hr>
+            <h4>For what purpose was the dataset created?</h4>
+            <p>
+                We created TCAB to facilitate future research on analyzing, understanding, detecting, and labeling adversarial attacks for text classifiers.
+            </p>
+
+            <h4>Who created the dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?</h4>
+            <p>
+                TCAB was created by the REACT-NLP team, consisting of researchers at the University of Oregon and University of California Irvine. The project was led by Daniel Lowd and Sameer Singh, and the dataset was constructed by Kalyani Asthana, Zhouhang Xie, Wencong You, Adam Noack, and Jonathan Brophy.
+            </p>
+
+            <h4>Who funded the creation of the dataset?</h4>
+            <p>This work was supported by the Defense Advanced Research Projects Agency (DARPA), agreement number HR00112090135.</p>
         <br>
-        <h3 class='subsectionHeader'>Composition</h3><hr>
+        <h2 class='subsectionHeader'>Composition</h2><hr>
+            <h4>What do the instances that comprise the dataset represent (e.g., documents, photos, people, countries)?</h4>
+            <p>The dataset contains text only.</p>
+
+            <h4>How many instances are there in total (of each type, if appropriate)?</h4>
+            <p>In total, TCAB contains 2,414,594 instances: 1,504,607 successful adversarial instances, and 909,987 clean (unperturbed) examples.</p>
+
+            <h4>Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?</h4>
+            <p>We attack the test sets of each domain dataset, thus adversarial examples in TCAB comprise attack instances from a portion of the original domain datasets.</p>
+
+            <h4>What data does each instance consist of?</h4>
+            <p>Each instance contains the original text, perturbed text, original ground-truth label, and whether the instance is clean or perturbed. We also provide metadata about the attack method such as the maximum number of queries, time taken per attack, and more.  Please refer to our <a href="https://zenodo.org/record/6615386#.YqIh0xPMK3J" target="_blank" rel="noopener noreferrer">dataset page</a> for a full description of all attributes.</p>
+
+            <h4>Is there a label or target associated with each instance?</h4>
+            <p>We provide labels indicating (1) whether the text is an adversarial instance and (2) what algorithm created the corresponding adversarial instance, which could then be used as labels for detecting adversarial attacks and identifying the attacking algorithm.</p>
+
+            <h4>Is any information missing from individual instances?</h4>
+            <p>There is no missing information from our instances.</p>
+
+            <h4>Are relationships between individual instances made explicit (e.g., users' movie ratings, social network links)?</h4>
+            <p>There are no explicit relationships between instances. However, our metadata supports grouping operations such as collecting instances perturbed from the same original text and instances attacked by the same attacking algorithm.</p>
+
+            <h4>Are there recommended data splits (e.g., training, development/validation, testing)?</h4>
+            <p>We randomly split the original dataset into training, validation and test sets. To avoid potential information leakage, all instances that originates from the same original text (including the unperturbed text itself) are guaranteed to be partitioned to the same split.</p>
+
+            <h4>Are there any errors, sources of noise, or redundancies in the dataset?</h4>
+            <p>Yes, adversarial attacks are by nature noisy, and there are cases where human judges believe the attack flips the true label of the text being perturbed. We present human evaluation results to help researchers evaluate the degree of such scenario in our dataset.</p>
+
+            <h4>Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, tweets, other datasets)?</h4>
+            <p>The dataset is self-contained and does not have external dependencies.</p>
+
+            <h4>Does the dataset contain data that might be considered confidential (e.g., data that is protected by legal privilege or by doctor–patient confidentiality, data that includes the content of individuals’ non-public communications)?</h4>
+            <p>The dataset does not contain confidential information.</p>
+
+            <h4>Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?</h4>
+            <p>Some instances from our dataset are derived from hatespeech datasets, and thus may contain offensive content.</p>
+
+            <h4>Does the dataset relate to people?</h4>
+            <p>The dataset is not related to people.</p>
         <br>
-        <h3 class='subsectionHeader'>Collection Process</h3><hr>
+        <h2 class='subsectionHeader'>Collection Process</h2><hr>
+            <h4>How was the data associated with each instance acquired?</h4>
+            <p>Our dataset is derived from publically available datasets.</p>
+
+            <h4>What mechanisms or procedures were used to collect the data (e.g., hardware apparatus or sensor, manual human curation, software program, software API)?</h4>
+            <p>We use <a href='https://github.com/QData/TextAttack' target="_blank" rel="noopener noreferrer">TextAttack</a> and <a href='https://github.com/thunlp/OpenAttack' target="_blank" rel="noopener noreferrer">OpenAttack</a> --- open-source toolchains that provide fully-automated off-the-shelf attacks --- to generate adversarial examples for TCAB. We ensure all released adversarial instances successfully flips the prediction of the victim model. We conduct additional human evaluation to check the quality of generated adversarial instances.</p>
+
+            <h4>If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?</h4>
+            <p>We randomly split data into train, validation and test set for each domain dataset, and train victim models using the training split. Adversarial instances are created from the test set of victim models only.</p>
+
+            <h4>Who was involved in the data collection process (e.g., students, crowdworkers, contractors) and how were they compensated (e.g., how much were crowdworkers paid)?</h4>
+            <p>Our data collection process is automated. First, we train multiple target model classifiers for each domain dataset, then we attack those target models using publicly-available attack algorithms to generate adversarial instances.</p>
+
+            <h4>Over what timeframe was the data collected?</h4>
+            <p>We generated attacks and curated instances for TCAB over a period of 12 months, from November 1, 2020 to November 1, 2021.</p>
+
+            <h4>Were any ethical review processes conducted (e.g., by an institutional review board)?</h4>
+            <p>No.</p>
+
+            <h4>Does the dataset relate to people?</h4>
+            <p>The dataset is not related to people.</p>
         <br>
-        <h3 class='subsectionHeader'>Preprocessing/Cleaning/Labeling</h3><hr>
+        <h2 class='subsectionHeader'>Preprocessing/Cleaning/Labeling</h2><hr>
+            <h4>Was any preprocessing/cleaning/labeling of the data done (e.g., discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?</h4>
+            <p>No, we directly use the text instances from each domain dataset.</p>
         <br>
-        <h3 class='subsectionHeader'>Uses</h3><hr>
+        <h2 class='subsectionHeader'>Uses</h2><hr>
+            <h4>Has the dataset been used for any tasks already?</h4>
+            <p>We present benchmarks for attacking detection and labeling.</p>
+
+            <h4>Is there a repository that links to any or all papers or systems that use the dataset?</h4>
+            <p><a href="https://aclanthology.org/2021.blackboxnlp-1.6/" target="_blank" rel="noopener noreferrer">Xie et al. (2021)</a> use this dataset for inferring attributes of different attacking algorithms.</p>
+
+            <h4>What (other) tasks could the dataset be used for?</h4>
+            <p>TCAB can also be used for attack localization, attack target labeling, and attack characterization.</p>
+
+            <h4>Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?</h4>
+            <p>Currently, all instances are in English, and thus might yield observations that are specific to English. However, we publicly release our code for generating adversarial attacks and training victim models, enabling the extension of TCAB to other languages.</p>
+
+            <h4>Are there tasks for which the dataset should not be used?</h4>
+            <p>No.</p>
         <br>
-        <h3 class='subsectionHeader'>Distribution</h3><hr>
+        <h2 class='subsectionHeader'>Distribution</h2><hr>
+            <h4>Will the dataset be distributed to third parties outside of the entity (e.g., company, institution, organization) on behalf of which the dataset was created?</h4>
+            <p>The dataset is publicly available.</p>
+
+            <h4>How will the dataset will be distributed (e.g., tarball on website, API, GitHub)? Does the dataset have a digital object identifier (DOI)?</h4>
+            <p>All instances in TCAB are publicly available as CSV files on Zenodo. The DOI of the dataset is <i>10.5281/zenodo.6615386</i>.</p>
+
+            <h4>When will the dataset be distributed?</h4>
+            <p>The dataset is currently available for <a href="https://zenodo.org/record/6615386#.Yp-_2BPMK3I" target="_blank" rel="noopener noreferrer">download</a>.</p>
+
+            <h4>Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?</h4>
+            <p>The dataset is distributed with a Creative Commons Attribution 4.0 International license.</p>
+
+            <h4>Have any third parties imposed IP-based or other restrictions on the data associated with the instances?</h4>
+            <p>No.</p>
+
+            <h4>Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?</h4>
+            <p>No.</p>
         <br>
-        <h3 class='subsectionHeader'>Maintenance</h3><hr>
+        <h2 class='subsectionHeader'>Maintenance</h2><hr>
+            <h4>Who will be supporting/hosting/maintaining the dataset?</h4>
+            <p>The REACT-NLP team will continue to support the TCAB dataset.</p>
+
+            <h4>How can the owner/curator/manager of the dataset be contacted (e.g., email address)?</h4>
+            <p>Please direct any questions to Sameer Singh (<a href="mailto: sameer@uci.edu">sameer@uci.edu</a>) or Daniel Lowd (<a href="mailto: lowd@cs.uoregon.edu">lowd@cs.uoregon.edu</a>).</p>
+
+            <h4>Is there an erratum?</h4>
+            <p>We will provide an erratum on the github repository if errors are found in the future.</p>
+
+            <h4>Will the dataset be updated (e.g., to correct labeling errors, add new instances, delete instances)?</h4>
+            <p>If errors need to be corrected, we will publish a new version of the dataset and record those changes on the <a href="https://react-nlp.github.io/tcab/" target="_blank" rel="noopener noreferrer">main project website</a>.</p>
+
+            <h4>If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g., were individuals in question told that their data would be retained for a fixed period of time and then deleted)?</h4>
+            <p>Our dataset is not related to people.</p>
+
+            <h4>Will older versions of the dataset continue to be supported/hosted/maintained?</h4>
+            <p>If TCAB is updated in the future, we will ensure backward compatibility by time-stamping different versions of the dataset.</p>
+
+            <h4>If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?</h4>
+            <p>TCAB is designed to be extended with new datasets, attack instances, and target models. Code and instructions for extending TCAB is available in the <a href="https://github.com/REACT-NLP/tcab_generation" target="_blank" rel="noopener noreferrer">TCAB Generation</a> repository.</p>
     </div>
 </body>
 </html>

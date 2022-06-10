@@ -77,3 +77,8 @@ li a:hover {
 .subsectionHeader {
     margin-block-end: 0;
 }
+
+/*datasheet.html*/
+#mainDiv h4 {
+    margin-block-end:  0;
+}
