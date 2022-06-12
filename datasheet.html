@@ -50,7 +50,7 @@
             <p>We attack the test sets of each domain dataset, thus adversarial examples in TCAB comprise attack instances from a portion of the original domain datasets.</p>
 
             <h4>What data does each instance consist of?</h4>
-            <p>Each instance contains the original text, perturbed text, original ground-truth label, and whether the instance is clean or perturbed. We also provide metadata about the attack method such as the maximum number of queries, time taken per attack, and more.  Please refer to our <a href="https://zenodo.org/record/6615386#.YqIh0xPMK3J" target="_blank" rel="noopener noreferrer">dataset page</a> for a full description of all attributes.</p>
+            <p>Each instance contains the original text, perturbed text, original ground-truth label, and whether the instance is clean or perturbed. For perturbed instances, we also provide information about the attack such as the method used, toolchain, maximum number of queries, time taken per attack, and more. Please refer to our <a href="https://zenodo.org/record/6615386#.YqIh0xPMK3J" target="_blank" rel="noopener noreferrer">dataset page</a> for a full description of all attributes.</p>
 
             <h4>Is there a label or target associated with each instance?</h4>
             <p>We provide labels indicating (1) whether the text is an adversarial instance and (2) what algorithm created the corresponding adversarial instance, which could then be used as labels for detecting adversarial attacks and identifying the attacking algorithm.</p>
@@ -62,7 +62,7 @@
             <p>There are no explicit relationships between instances. However, our metadata supports grouping operations such as collecting instances perturbed from the same original text and instances attacked by the same attacking algorithm.</p>
 
             <h4>Are there recommended data splits (e.g., training, development/validation, testing)?</h4>
-            <p>We randomly split the original dataset into training, validation and test sets. To avoid potential information leakage, all instances that originates from the same original text (including the unperturbed text itself) are guaranteed to be partitioned to the same split.</p>
+            <p>We randomly split the original dataset into training, validation and test sets. To avoid potential information leakage, all instances that originate from the same original text (including the unperturbed text) are guaranteed to be partitioned to the same split.</p>
 
             <h4>Are there any errors, sources of noise, or redundancies in the dataset?</h4>
             <p>Yes, adversarial attacks are by nature noisy, and there are cases where human judges believe the attack flips the true label of the text being perturbed. We present human evaluation results to help researchers evaluate the degree of such scenario in our dataset.</p>
@@ -87,7 +87,7 @@
             <p>We use <a href='https://github.com/QData/TextAttack' target="_blank" rel="noopener noreferrer">TextAttack</a> and <a href='https://github.com/thunlp/OpenAttack' target="_blank" rel="noopener noreferrer">OpenAttack</a> --- open-source toolchains that provide fully-automated off-the-shelf attacks --- to generate adversarial examples for TCAB. We ensure all released adversarial instances successfully flips the prediction of the victim model. We conduct additional human evaluation to check the quality of generated adversarial instances.</p>
 
             <h4>If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?</h4>
-            <p>We randomly split data into train, validation and test set for each domain dataset, and train victim models using the training split. Adversarial instances are created from the test set of victim models only.</p>
+            <p>We randomly split the data into a train/validation/test split for each domain dataset. We then train different target models using the training and validation sets, and generate adversarial instances by attacking the target model on the test set.</p>
 
             <h4>Who was involved in the data collection process (e.g., students, crowdworkers, contractors) and how were they compensated (e.g., how much were crowdworkers paid)?</h4>
             <p>Our data collection process is automated. First, we train multiple target model classifiers for each domain dataset, then we attack those target models using publicly-available attack algorithms to generate adversarial instances.</p>
